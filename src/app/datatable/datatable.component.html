@@ -38,7 +38,7 @@
     <button id="countByManufacturerIdBtn" tabindex="2" class="btn btn-primary px-2 py-1 mr-3" >Подсчитать кол-во продуктов производителя:</button>
     <div class="inputDiv">
       <input type="text" id="manufacturerIdField" placeholder="ИД производителя" tabindex="1"/>
-      <div id="count" class="paragraph">
+      <div id="count1" class="paragraph">
         <p id="p1"></p>
       </div>
     </div>
@@ -47,6 +47,27 @@
     <button id="getUniqueManufactureCostBtn" tabindex="2" class="btn btn-primary px-2 py-1 mr-3" >Отобразить продукты с уникальными стоимостями</button>
   </div>
 </div>
+<!--<div class="card">-->
+<!--  <div>-->
+<!--    <button id="getProductsByManufactureIdBtn" tabindex="4" class="btn btn-dark px-2 py-1 mr-3" >Отобразить продукты указанного производителя:</button>-->
+<!--    <div class="inputDiv">-->
+<!--      <input type="text" id="manufacturerIdField2" placeholder="ИД производителя" tabindex="1"/>-->
+<!--      <div id="count2" class="paragraph">-->
+<!--        <p id="p2"></p>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="countArea">-->
+<!--    <button id="getProductsByPriceBtn" tabindex="2" class="btn btn-primary px-2 py-1 mr-3" >Выбрать всю продукцию из диапазона цен:</button>-->
+<!--    <div class="inputDiv">-->
+<!--      <input type="text" id="minPriceField" placeholder="Мин. цена" tabindex="1"/>-->
+<!--      <input type="text" id="maxPriceField" placeholder="Макс. цена" tabindex="2"/>-->
+<!--      <div id="count" class="paragraph">-->
+<!--        <p id="p1"></p>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
 <ng-template #addEditModal let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">{{currentOperation}} продукта</h4>
@@ -63,23 +84,23 @@
           <input type="text" id = "input_name" class="form-control" [ngModel]="currentRecord[col.data]" customRequired  [name]="col.data">
         </div>
         <div class="col-sm-10" *ngIf="col.title === 'Коорд. х'">
-          <input type="number" id="input_x" class="form-control" [ngModel]="currentRecord[col.data]" customRequired [name]="col.data">
+          <input type="text" id="input_x" class="form-control" [ngModel]="currentRecord[col.data]" customRequired [name]="col.data">
         </div>
         <div class="col-sm-10" *ngIf="col.title === 'Коорд. у'">
-          <input type="number" [customMin]="-686.999" id = "input_y" class="form-control" [ngModel]="currentRecord[col.data]" customRequired [name]="col.data " #coor_y="ngModel">
+          <input type="text" [customMin]="-686.999" id = "input_y" class="form-control" [ngModel]="currentRecord[col.data]" customRequired [name]="col.data " #coor_y="ngModel">
           <div *ngIf="coor_y.dirty || coor_y.touched">
             <span *ngIf="coor_y?.errors?.customMin" class="text-danger">Значение должно быть больше -687</span>
           </div>
 
         </div>
         <div class="col-sm-10" *ngIf="col.title === 'Цена'">
-          <input type="number" [customMin]="1" id="input_price" class="form-control" [ngModel]="currentRecord[col.data]" [name]="col.data"  #price="ngModel">
+          <input type="text" [customMin]="1" id="input_price" class="form-control" [ngModel]="currentRecord[col.data]" [name]="col.data"  #price="ngModel">
           <div *ngIf="price.dirty || price.touched">
             <span *ngIf="price?.errors?.customMin" class="text-danger">Значение должно быть больше 0</span>
           </div>
         </div>
         <div class="col-sm-10" *ngIf="col.title === 'Цена производителя'">
-          <input type="number" id = "input_m_price" class="form-control" [ngModel]="currentRecord[col.data]" customRequired [name]="col.data">
+          <input type="text" id = "input_m_price" class="form-control" [ngModel]="currentRecord[col.data]" customRequired [name]="col.data">
         </div>
         <div class="col-sm-10" *ngIf="col.title === 'Ед. измерения'">
           <select class="form-control" [ngModel]="currentRecord[col.data]" [name]="col.data">
@@ -100,7 +121,7 @@
           </div>
         </div>
         <div class="col-sm-10" *ngIf="col.title === 'Число сотрудников'">
-          <input type="number" [customMin]="1" id="input_m_employeesCount" class="form-control" [ngModel]="currentRecord[col.data]" [name]="col.data" #countEmpl = "ngModel">
+          <input type="text" [customMin]="1" id="input_m_employeesCount" class="form-control" [ngModel]="currentRecord[col.data]" [name]="col.data" #countEmpl = "ngModel">
           <div *ngIf="countEmpl.dirty || countEmpl.touched">
             <span *ngIf="countEmpl?.errors?.customMin" class="text-danger">Значение должно быть больше 0</span>
           </div>
